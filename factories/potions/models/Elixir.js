@@ -10,7 +10,7 @@ export class Elixir extends Potion {
 
     static create(ingredients) {
         if (ingredients.length < 2 || ingredients.length > 4) {
-            console.log("Invalid number of ingredients:", ingredients.length);
+            // console.log("Invalid number of ingredients:", ingredients.length);
             return null;
         }
 
@@ -29,7 +29,7 @@ export class Elixir extends Potion {
 
         const prefixValues = ingredients.map(ingredient => {
             const effectWords = ingredient.effects[0].split('_');
-            console.log("Effect words breakdown:", effectWords);
+            // console.log("Effect words breakdown:", effectWords);
 
             let prefixValue = 0;
             let prefix = '';
@@ -42,7 +42,7 @@ export class Elixir extends Potion {
                 prefix = ''; 
             }
 
-            console.log("Extracted Prefix:", prefix);
+            // console.log("Extracted Prefix:", prefix);
 
             switch (prefix) {
                 case 'least':
@@ -66,16 +66,16 @@ export class Elixir extends Potion {
             const effectType = effectWords[1];
             const affectedAttribute = effectWords.length === 3 ? effectWords[2] : effectWords[1];
 
-            console.log("Prefix:", prefix, "Type:", effectType, "Attribute:", affectedAttribute);
+            // console.log("Prefix:", prefix, "Type:", effectType, "Attribute:", affectedAttribute);
 
             effect = effectWords;
             return prefixValue;
         });
 
-        console.log("Prefix values:", prefixValues);
+        // console.log("Prefix values:", prefixValues);
 
         const weakestValue = Math.min(...prefixValues);
-        console.log("Weakest value:", weakestValue);
+        // console.log("Weakest value:", weakestValue);
 
         switch (weakestValue) {
             case 5:
@@ -92,7 +92,7 @@ export class Elixir extends Potion {
                 break;
         }
 
-        console.log("Weakest prefix determined:", weakestPrefix);
+        // console.log("Weakest prefix determined:", weakestPrefix);
 
         const effectType = effect[1];
         const affectedAttribute = effect[effect.length - 1];
@@ -111,7 +111,7 @@ export class Elixir extends Potion {
                 ? `${weakestPrefix} ${capitalizedAttribute} Elixir` 
                 : `${weakestPrefix} Calm Elixir`;
 
-        console.log("Final potion name:", potionName);
+        // console.log("Final potion name:", potionName);
 
         return new Elixir(potionName, getDuration, modifiers);
     }

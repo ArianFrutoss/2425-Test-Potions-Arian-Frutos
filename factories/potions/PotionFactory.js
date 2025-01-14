@@ -28,7 +28,7 @@ export class PotionFactory {
 
     for (let ingredient of ingredients){
       
-      console.log(ingredient);
+      // console.log(ingredient);
       let ingredientEffectType = '';
       let ingredientIsPositive = '';
       let ingredientAttributeType = '';
@@ -57,9 +57,9 @@ export class PotionFactory {
     const areEffectsTypeEqual = effectTypes.every(effect => effect === effectTypes[0]);
     const areEffectsPositive = effectPositives.every(pos => pos === effectPositives[0]);
 
-    console.log(attributeTypes, areAttributesTypeEqual);
-    console.log(effectTypes, areEffectsTypeEqual);
-    console.log(effectPositives, areEffectsPositive);
+    // console.log(attributeTypes, areAttributesTypeEqual);
+    // console.log(effectTypes, areEffectsTypeEqual);
+    // console.log(effectPositives, areEffectsPositive);
 
     if (areAttributesTypeEqual && areEffectsTypeEqual && areEffectsPositive){
 

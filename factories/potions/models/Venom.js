@@ -25,7 +25,7 @@ export class Venom extends Potion {
 
         const prefixValues = ingredients.map(ingredient => {
             const effectWords = ingredient.effects[0].split('_');
-            console.log("Effect words breakdown:", effectWords);
+            // console.log("Effect words breakdown:", effectWords);
 
             let prefixValue = 0;
             let prefix = '';
@@ -38,7 +38,7 @@ export class Venom extends Potion {
                 prefix = ''; 
             }
 
-            console.log("Extracted Prefix:", prefix);
+            // console.log("Extracted Prefix:", prefix);
 
             switch (prefix) {
                 case 'least':
@@ -62,16 +62,16 @@ export class Venom extends Potion {
             const effectType = effectWords[1];
             const affectedAttribute = effectWords.length === 3 ? effectWords[2] : effectWords[1];
 
-            console.log("Prefix:", prefix, "Type:", effectType, "Attribute:", affectedAttribute);
+            // console.log("Prefix:", prefix, "Type:", effectType, "Attribute:", affectedAttribute);
 
             effect = effectWords; 
             return prefixValue; 
         });
 
-        console.log("Prefix values:", prefixValues);
+        // console.log("Prefix values:", prefixValues);
 
         const weakestValue = Math.min(...prefixValues);
-        console.log("Weakest value:", weakestValue);
+        // console.log("Weakest value:", weakestValue);
 
         switch (weakestValue) {
             case 5:
@@ -88,7 +88,7 @@ export class Venom extends Potion {
                 break;
         }
 
-        console.log("Weakest prefix determined:", weakestPrefix);
+        // console.log("Weakest prefix determined:", weakestPrefix);
 
         const effectType = effect[1];
         const affectedAttribute = effect[effect.length - 1];
@@ -107,7 +107,7 @@ export class Venom extends Potion {
                 ? `${weakestPrefix} ${capitalizedAttribute} Venom` 
                 : `${weakestPrefix} Frenzy Venom`; 
 
-        console.log("Final potion name:", potionName);
+        // console.log("Final potion name:", potionName);
 
         return new Venom(potionName, getDuration, modifiers);
     }
