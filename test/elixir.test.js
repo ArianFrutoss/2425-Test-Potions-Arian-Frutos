@@ -300,3 +300,16 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
         });
     });
 });
+describe('Si el numero de ingredientes es menor que 2 o mayor que 4', () => {
+    it('No podremos crear el elixir. (Comprobar nombre)', async () => {
+    
+        const ingredients = await getIngredients();
+        const diseases = await getDiseases();
+
+        const selectedIngredients = [getSelectedIngredient(ingredients, "Guardian's Essence")];
+        
+        const elixir = PotionFactory.createPotion(selectedIngredients, diseases);
+
+        expect(elixir.name).not.toContain('Elixir');
+    });
+});
