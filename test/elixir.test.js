@@ -100,6 +100,30 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
                         expect(elixir.duration).toBe(3);
                     });
                 });
+                describe('Cuando todos los efectos son de tipo diferente', () => {
+                    it('El valor resultante del atributo sera la media de los values de los ingredientes. Una vez calculada la media se redondeara al multiplo de 5 inferior', async () => {
+    
+                        const ingredients = await getIngredients();
+                        const diseases = await getDiseases();
+    
+                        const selectedIngredients = [getSelectedIngredient(ingredients, "Moonshade Petal"), getSelectedIngredient(ingredients, "Radiant Petal"), getSelectedIngredient(ingredients, "Celestial Orchid"), getSelectedIngredient(ingredients, "Dreamer's Dew")];
+    
+                        const elixir = PotionFactory.createPotion(selectedIngredients, diseases);
+                        
+                        expect(elixir.modifiers.charisma).toBe(10);
+                    });
+                    it('La duracion sera la media de duraciones de los efectos de cada ingrediente, redondeada para abajo', async () => {
+    
+                        const ingredients = await getIngredients();
+                        const diseases = await getDiseases();
+    
+                        const selectedIngredients = [getSelectedIngredient(ingredients, "Moonshade Petal"), getSelectedIngredient(ingredients, "Radiant Petal"), getSelectedIngredient(ingredients, "Celestial Orchid"), getSelectedIngredient(ingredients, "Dreamer's Dew")];
+    
+                        const elixir = PotionFactory.createPotion(selectedIngredients, diseases);
+    
+                        expect(elixir.duration).toBe(1);
+                    });
+                });
             });
         });
     });
