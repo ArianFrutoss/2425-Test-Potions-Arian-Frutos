@@ -133,7 +133,7 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
 
                     const elixir = PotionFactory.createPotion(selectedIngredients, diseases);
 
-                    expect(elixir.name).toBe('Lesser Charisma Elixir');
+                    expect(elixir.name).toBe('Lesser Calm Elixir');
                 });
             });
         });
