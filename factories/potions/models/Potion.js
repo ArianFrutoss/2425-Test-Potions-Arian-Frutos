@@ -1,5 +1,3 @@
-import Modifiers from '../../../interfaces/Modifiers';
-
 export class Potion {
     name;
     type;

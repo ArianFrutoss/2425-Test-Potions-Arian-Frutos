@@ -1,5 +1,4 @@
 import { Potion } from './Potion';
-import EssenceInterface from '../../../interfaces/potions/Essence';
 
 export class Essence extends Potion {
     constructor(name, modifiers) {

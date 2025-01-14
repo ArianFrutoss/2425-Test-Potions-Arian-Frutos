@@ -1,5 +1,4 @@
 import { Potion } from './Potion';
-import VenomInterface from '../../../interfaces/potions/Venom';
 
 export class Venom extends Potion {
     duration;
