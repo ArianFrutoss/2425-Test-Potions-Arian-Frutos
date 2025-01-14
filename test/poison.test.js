@@ -1,5 +1,6 @@
 import { PotionFactory } from "../factories/potions/PotionFactory";
 import { getDiseases, getIngredients } from "../getIngredientAndDiseases";
+import { getSelectedDisease, getSelectedIngredient } from "../getSelectedIngredientsAndDiseases";
 
 describe('Cuando todos los ingredientes llevan el efecto "Damage"', () => {
     describe('Si los ingredientes contienen los efectos necesarios para combatir una enfermedad concreta, se creara el poison asociado a la enfermedad', () => {
@@ -8,19 +9,19 @@ describe('Cuando todos los ingredientes llevan el efecto "Damage"', () => {
             const ingredients = await getIngredients();
             const diseases = await getDiseases();
 
-            const selectedIngredients = [ingredients[59], ingredients[45]];
+            const selectedIngredients = [getSelectedIngredient(ingredients, "Distraction Herb"), getSelectedIngredient(ingredients, "The Sorrowful Bloom")];
             
             const poison = PotionFactory.createPotion(selectedIngredients, diseases);
 
-            expect(poison.name).toBe('Poison of Ethereal Consumption');
+            expect(poison.name).toBe("Poison of Specter's Grip");
         });
         it('Los atributos tendran el valor que aparece en la enfermedad, en su defecto, el rango de valores que se muestra en la tabla de creacion de pociones (si se ha empleado)', async () => {
             
             const ingredients = await getIngredients();
             const diseases = await getDiseases();
 
-            const selectedIngredients = [ingredients[59], ingredients[45]];
-            const selectedDisease = diseases[1];
+            const selectedIngredients = [getSelectedIngredient(ingredients, "Distraction Herb"), getSelectedIngredient(ingredients, "The Sorrowful Bloom")];
+            const selectedDisease = getSelectedDisease(diseases, "Specter's Grip");
 
             const poison = PotionFactory.createPotion(selectedIngredients, diseases);
             
@@ -33,7 +34,7 @@ describe('Cuando todos los ingredientes llevan el efecto "Damage"', () => {
             const ingredients = await getIngredients();
             const diseases = await getDiseases();
 
-            const selectedIngredients = [ingredients[59], ingredients[10]];
+            const selectedIngredients = [getSelectedIngredient(ingredients, "Wisdom's Nectar"), getSelectedIngredient(ingredients, "The Sorrowful Bloom")];
 
             const poison = PotionFactory.createPotion(selectedIngredients, diseases);
 

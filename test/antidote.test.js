@@ -1,5 +1,6 @@
 import { PotionFactory } from "../factories/potions/PotionFactory";
 import { getDiseases, getIngredients } from "../getIngredientAndDiseases";
+import { getSelectedIngredient } from "../getSelectedIngredientsAndDiseases";
 
 describe('Cuando todos los ingredientes llevan el efecto "Restore"', () => {
     describe('Si los ingredientes contienen los efectos necesarios para combatir una enfermedad concreta, se creara el antidoto asociado a la enfermedad', () => {
@@ -8,7 +9,7 @@ describe('Cuando todos los ingredientes llevan el efecto "Restore"', () => {
             const ingredients = await getIngredients();
             const diseases = await getDiseases();
 
-            const selectedIngredients = [ingredients[20], ingredients[14]];
+            const selectedIngredients = [getSelectedIngredient(ingredients, "Guardian's Essence"), getSelectedIngredient(ingredients, "Enduring Root")];
 
             const antidote = PotionFactory.createPotion(selectedIngredients, diseases);
 
@@ -21,11 +22,11 @@ describe('Cuando todos los ingredientes llevan el efecto "Restore"', () => {
             const ingredients = await getIngredients();
             const diseases = await getDiseases();
 
-            const selectedIngredients = [ingredients[21], ingredients[14]];
+            const selectedIngredients = [getSelectedIngredient(ingredients, "Amber Bloom"), getSelectedIngredient(ingredients, "Enduring Root")];
 
             const antidote = PotionFactory.createPotion(selectedIngredients, diseases);
 
             expect(antidote.name).not.toContain('Antidote');
         });
-    });   
+    });
 });
