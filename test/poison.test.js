@@ -34,11 +34,11 @@ describe('Cuando todos los ingredientes llevan el efecto "Damage"', () => {
             const ingredients = await getIngredients();
             const diseases = await getDiseases();
 
-            const selectedIngredients = [getSelectedIngredient(ingredients, "Wisdom's Nectar"), getSelectedIngredient(ingredients, "The Sorrowful Bloom")];
+            const selectedIngredients = [getSelectedIngredient(ingredients, "Amber Bloom"), getSelectedIngredient(ingredients, "Enduring Root")];
 
-            const poison = PotionFactory.createPotion(selectedIngredients, diseases);
+            const elixir = PotionFactory.createPotion(selectedIngredients, diseases);
 
-            expect(poison.name).not.toContain('Poison');
+            expect(elixir.name).not.toContain('Elixir');
         });
     });
 });

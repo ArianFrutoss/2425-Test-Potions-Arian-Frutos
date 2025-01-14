@@ -137,5 +137,18 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
                 });
             });
         });
+        describe('Cuando no todos los ingredientes tienen el mismo atributo (INT, DEX...)', () => {
+            it('No podremos crear el elixir. El nombre de la pocion creada no llevara la palabra "Elixir"', async () => {
+    
+                const ingredients = await getIngredients();
+                const diseases = await getDiseases();
+
+                const selectedIngredients = [getSelectedIngredient(ingredients, "Amber Bloom"), getSelectedIngredient(ingredients, "Radiant Petal"), getSelectedIngredient(ingredients, "Celestial Orchid"), getSelectedIngredient(ingredients, "Dreamer's Dew")];
+
+                const elixir = PotionFactory.createPotion(selectedIngredients, diseases);
+
+                expect(elixir.name).not.toContain('Elixir');
+            });
+        });
     });
 });
