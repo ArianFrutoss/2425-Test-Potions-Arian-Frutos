@@ -15,6 +15,20 @@ describe('Cuando todos los ingredientes llevan el efecto "Restore"', () => {
 
             expect(antidote.name).toBe('Antidote of Gravechill');
         });
+        it('Los atributos tendran el valor que aparece en la enfermedad pero cambiado de signo o, en su defecto, el rango de valores que se muestra en la tabla de creacion de pociones (si se ha empleado)', async () => {
+
+            const ingredients = await getIngredients();
+            const diseases = await getDiseases();
+
+            const selectedIngredients = [getSelectedIngredient(ingredients, "Guardian's Essence"), getSelectedIngredient(ingredients, "Enduring Root")];
+
+            const antidote = PotionFactory.createPotion(selectedIngredients, diseases);
+
+            expect(antidote.modifiers.hit_points).toBeLessThanOrEqual(50);
+            expect(antidote.modifiers.hit_points).toBeGreaterThanOrEqual(40);
+            expect(antidote.modifiers.constitution).toBeLessThanOrEqual(9);
+            expect(antidote.modifiers.constitution).toBeGreaterThanOrEqual(6);
+        });
     });
     describe('Si alguno de los ingredientes no tiene el nombre "Restore"', () => {
         it('No podremos crear un antidoto. El nombre de la pocion creada no llevara la palabra "Antidote"', async () => {

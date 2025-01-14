@@ -83,7 +83,7 @@ export class Essence extends Potion {
 
         const potionName = `Essence of ${weakestPrefix} heal`; 
 
-        console.log("Final potion name:", potionName);
+        // console.log("Final potion name:", potionName);
 
         return new Essence(potionName, modifiers);
     }

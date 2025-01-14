@@ -83,7 +83,7 @@ export class Stench extends Potion {
 
         const potionName = `Stench of ${weakestPrefix} Damage`; 
 
-        console.log("Final potion name:", potionName);
+        // console.log("Final potion name:", potionName);
 
         return new Stench(potionName, modifiers);
     }
