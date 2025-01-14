@@ -124,6 +124,17 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
                         expect(elixir.duration).toBe(1);
                     });
                 });
+                it('El nombre de la pocion sera: Modifier + Attribute + Elixir. El modificador del nombre sera el que corresponda con el value correspondiente segun la tabla', async () => {
+    
+                    const ingredients = await getIngredients();
+                    const diseases = await getDiseases();
+
+                    const selectedIngredients = [getSelectedIngredient(ingredients, "Moonshade Petal"), getSelectedIngredient(ingredients, "Radiant Petal"), getSelectedIngredient(ingredients, "Celestial Orchid"), getSelectedIngredient(ingredients, "Dreamer's Dew")];
+
+                    const elixir = PotionFactory.createPotion(selectedIngredients, diseases);
+
+                    expect(elixir.name).toBe('Lesser Charisma Elixir');
+                });
             });
         });
     });
